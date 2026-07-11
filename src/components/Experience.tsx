@@ -75,7 +75,7 @@ export default function Experience() {
               
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.02] border border-white/[0.05] text-gray-400 text-xs font-mono md:flex-row-reverse w-max">
                 <Calendar className="w-3.5 h-3.5" />
-                June 2025 – August 2025
+                Jan 2026 – March 2026
               </div>
             </motion.div>
 

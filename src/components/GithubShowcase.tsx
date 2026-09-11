@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GitBranch, Star, FolderGit2, Laptop, Users } from "lucide-react";
+import { Star, FolderGit2, Laptop, Users } from "lucide-react";
 
 interface GitHubProfile {
   public_repos: number;
@@ -415,11 +415,6 @@ export default function GithubShowcase() {
             >
               <div className="lg:col-span-8 space-y-6">
                 <div className="h-48 bg-slate-200/40 border border-slate-300/40 rounded-2xl animate-pulse" />
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {[1, 2, 3].map((n) => (
-                    <div key={n} className="h-44 bg-slate-200/40 border border-slate-300/40 rounded-xl animate-pulse" />
-                  ))}
-                </div>
               </div>
               <div className="lg:col-span-4 space-y-6">
                 <div className="grid grid-cols-2 gap-4">
@@ -493,41 +488,6 @@ export default function GithubShowcase() {
                       <span>More</span>
                     </div>
                   </div>
-                </div>
-
-                {/* Real Repositories Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {data?.repos.map((repo, idx) => (
-                    <motion.a
-                      key={idx}
-                      href={repo.html_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ y: -4 }}
-                      className="glassmorphism-card p-5 rounded-xl border border-slate-200/80 hover:border-purple-primary/40 flex flex-col justify-between h-48 text-left transition-all duration-300 shadow-sm"
-                    >
-                      <div>
-                        <h3 className="text-sm font-bold text-slate-900 font-mono flex items-center justify-between">
-                          <span className="truncate pr-2">{repo.name}</span>
-                          <FolderGit2 className="w-3.5 h-3.5 text-purple-light flex-shrink-0" />
-                        </h3>
-                        <p className="text-[11px] text-slate-600 leading-relaxed mt-3.5 line-clamp-3">
-                          {repo.description || "Project codebase developed by Ashmit Vavhal."}
-                        </p>
-                      </div>
-
-                      <div className="flex items-center justify-between text-[10px] font-mono text-slate-500 border-t border-slate-200/60 pt-3 mt-4">
-                        <div className="flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: LANG_COLORS[repo.language] || "#00B289" }} />
-                          <span className="text-slate-700">{repo.language || "Web"}</span>
-                        </div>
-                        <div className="flex items-center gap-2.5">
-                          <span className="flex items-center gap-0.5 text-slate-600"><Star className="w-3 h-3 text-purple-light" /> {repo.stargazers_count}</span>
-                          <span className="flex items-center gap-0.5 text-slate-600"><GitBranch className="w-3 h-3 text-purple-light" /> {repo.forks_count}</span>
-                        </div>
-                      </div>
-                    </motion.a>
-                  ))}
                 </div>
 
               </div>

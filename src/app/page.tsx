@@ -7,6 +7,7 @@ import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
 import Achievements from "@/components/Achievements";
 import GithubShowcase from "@/components/GithubShowcase";
+import LeetcodeShowcase from "@/components/LeetcodeShowcase";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -35,6 +36,9 @@ export default function Home() {
 
         {/* GitHub Showcase Section */}
         <GithubShowcase />
+
+        {/* LeetCode Showcase Section */}
+        <LeetcodeShowcase />
 
         {/* Contact Section */}
         <Contact />

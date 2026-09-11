@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { GitBranch, Star, FolderGit2, GitPullRequest, Laptop, Users, Calendar, MessageSquareCode, Code2 } from "lucide-react";
+import { GitBranch, Star, FolderGit2, Laptop, Users } from "lucide-react";
 
 interface GitHubProfile {
   public_repos: number;
@@ -522,60 +522,7 @@ export default function GithubShowcase() {
 
                 </div>
 
-                {/* Real Languages Code Weights */}
-                <div className="glassmorphism-card p-6 rounded-2xl border border-purple-primary/15 text-left">
-                  <h3 className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wider mb-6 flex items-center gap-1.5">
-                    <Code2 className="w-4.5 h-4.5 text-purple-light" />
-                    Code Weights
-                  </h3>
 
-                  {/* Combined bar */}
-                  <div className="w-full h-2.5 bg-slate-200/60 rounded-full overflow-hidden flex mb-6">
-                    {data?.languages.map((lang, idx) => (
-                      <div
-                        key={idx}
-                        className="h-full"
-                        style={{
-                          width: `${lang.percent}%`,
-                          backgroundColor: lang.color
-                        }}
-                      />
-                    ))}
-                  </div>
-
-                  {/* Legends */}
-                  <div className="space-y-3.5">
-                    {data?.languages.map((lang, idx) => (
-                      <div key={idx} className="flex items-center justify-between text-xs font-mono">
-                        <div className="flex items-center gap-2">
-                          <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: lang.color }} />
-                          <span className="text-slate-700">{lang.name}</span>
-                        </div>
-                        <span className="text-slate-900 font-bold">{lang.percent}%</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Recent Commit History Logs */}
-                <div className="glassmorphism-card p-5 rounded-2xl border border-slate-200/80 text-left shadow-sm">
-                  <div className="flex items-center gap-2 font-mono text-xs mb-4 border-b border-slate-200/60 pb-2">
-                    <MessageSquareCode className="w-4 h-4 text-purple-light" />
-                    <span className="font-bold text-slate-900">Recent Activity</span>
-                  </div>
-
-                  <div className="space-y-4">
-                    {data?.events.map((ev) => (
-                      <div key={ev.id} className="text-[11px] font-mono text-slate-600">
-                        <div className="flex justify-between items-baseline text-slate-900 mb-0.5">
-                          <span className="font-bold text-purple-light text-[10px] truncate max-w-[130px]">{ev.title}</span>
-                          <span className="text-[8px] text-slate-500 font-semibold">{ev.date}</span>
-                        </div>
-                        <p className="line-clamp-2 leading-relaxed text-[10px] text-slate-600">{ev.subtitle}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
 
               </div>
 

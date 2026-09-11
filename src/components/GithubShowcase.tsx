@@ -35,6 +35,12 @@ interface GitHubEvent {
   };
 }
 
+interface ContributionDay {
+  date: string;   // "YYYY-MM-DD"
+  count: number;
+  level: number;  // 0-4 as returned by the contributions API
+}
+
 interface ProcessedData {
   profile: GitHubProfile;
   stats: {
@@ -148,6 +154,8 @@ export default function GithubShowcase() {
   const [data, setData] = useState<ProcessedData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [rateLimited, setRateLimited] = useState<boolean>(false);
+  const [calendarDays, setCalendarDays] = useState<ContributionDay[]>([]);
+  const [tooltip, setTooltip] = useState<{ count: number; date: string; x: number; y: number } | null>(null);
 
   useEffect(() => {
     const fetchGitHubData = async () => {
@@ -279,47 +287,90 @@ export default function GithubShowcase() {
     fetchGitHubData();
   }, []);
 
-  // Generates a grid showing exactly the number of total contributions
-  // placed deterministically using a simple pseudo-random algorithm.
-  const generateGrid = (total: number) => {
-    const rows = 7;
-    const cols = 40;
-    const grid: number[][] = Array(rows).fill(0).map(() => Array(cols).fill(0));
-    
-    let placed = 0;
-    let seed = 12; // Deterministic seed so squares stay in place on re-renders
-    const random = () => {
-      const x = Math.sin(seed++) * 10000;
-      return x - Math.floor(x);
+  // Separate effect: fetch real per-day contribution calendar data
+  useEffect(() => {
+    const CONTRIB_CACHE_KEY = "ashmit-contrib-calendar-2026-v1";
+    const CONTRIB_CACHE_EXPIRY = 60 * 60 * 1000; // 1 hour
+    const fetchCalendar = async () => {
+      try {
+        const cached = localStorage.getItem(CONTRIB_CACHE_KEY);
+        if (cached) {
+          const { days, timestamp } = JSON.parse(cached);
+          if (Date.now() - timestamp < CONTRIB_CACHE_EXPIRY) {
+            setCalendarDays(days);
+            return;
+          }
+        }
+        const res = await fetch("https://github-contributions-api.jogruber.de/v4/AshmitVavhal?y=2026");
+        const json = await res.json();
+        if (json.contributions && Array.isArray(json.contributions)) {
+          localStorage.setItem(CONTRIB_CACHE_KEY, JSON.stringify({ days: json.contributions, timestamp: Date.now() }));
+          setCalendarDays(json.contributions);
+        }
+      } catch {
+        // Silently fail – grid will fall back to placeholder cells with estimated dates
+      }
     };
+    fetchCalendar();
+  }, []);
 
-    // Distribute them in the last 20 columns to look like recent activity
-    const targetCols = 20;
-    const startCol = cols - targetCols;
-
-    while (placed < total) {
-      const r = Math.floor(random() * rows);
-      const c = startCol + Math.floor(random() * targetCols);
-      if (grid[r][c] === 0) {
-        grid[r][c] = Math.floor(random() * 3) + 1; // Level 1 (light purple) to 3 (bright purple)
-        placed++;
+  // Build a 7-row × 40-col grid of ContributionDay objects from real API data.
+  // Falls back to placeholder cells with estimated dates when API data is unavailable.
+  const buildDayGrid = (days: ContributionDay[], rows = 7, cols = 40): ContributionDay[][] => {
+    const total = rows * cols;
+    let source: ContributionDay[];
+    if (days.length > 0) {
+      if (days.length >= total) {
+        source = days.slice(-total);
+      } else {
+        const pad = Array.from({ length: total - days.length }, (_, i) => {
+          const earliest = new Date(days[0].date + "T00:00:00");
+          earliest.setDate(earliest.getDate() - (total - days.length - i));
+          return { date: earliest.toISOString().split("T")[0], count: 0, level: 0 };
+        });
+        source = [...pad, ...days];
+      }
+    } else {
+      // Fallback: generate date-stamped empty cells for the last 280 days
+      const today = new Date();
+      source = Array.from({ length: total }, (_, i) => {
+        const d = new Date(today);
+        d.setDate(d.getDate() - (total - 1 - i));
+        return { date: d.toISOString().split("T")[0], count: 0, level: 0 };
+      });
+    }
+    // Build grid[row][col] where col = week, row = day-of-week
+    const grid: ContributionDay[][] = Array.from({ length: rows }, () =>
+      Array.from({ length: cols }, () => ({ date: "", count: 0, level: 0 }))
+    );
+    for (let col = 0; col < cols; col++) {
+      for (let row = 0; row < rows; row++) {
+        grid[row][col] = source[col * rows + row];
       }
     }
-    return { grid, rows, cols };
+    return grid;
   };
 
-  const contributionInfo = data ? generateGrid(data.stats.totalContributions) : null;
+  const formatDate = (dateStr: string) => {
+    if (!dateStr) return "Unknown date";
+    const [y, m, d] = dateStr.split("-").map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString("en-US", {
+      month: "long", day: "numeric", year: "numeric",
+    });
+  };
+
+  const dayGrid = buildDayGrid(calendarDays);
+  const totalContrib = calendarDays.length > 0
+    ? calendarDays.reduce((sum, d) => sum + d.count, 0)
+    : (data?.stats.totalContributions ?? 0);
 
   const getCellColor = (level: number) => {
     switch (level) {
-      case 1:
-        return "bg-emerald-200 border border-emerald-300";
-      case 2:
-        return "bg-emerald-400 border border-emerald-500";
-      case 3:
-        return "bg-purple-primary border border-emerald-600 shadow-[0_0_8px_rgba(0,178,137,0.4)]";
-      default:
-        return "bg-slate-200/60 border border-slate-300/40";
+      case 1: return "bg-emerald-200 border border-emerald-300";
+      case 2: return "bg-emerald-400 border border-emerald-500";
+      case 3: return "bg-emerald-500 border border-emerald-600";
+      case 4: return "bg-purple-primary border border-emerald-600 shadow-[0_0_8px_rgba(0,178,137,0.4)]";
+      default: return "bg-slate-200/60 border border-slate-300/40";
     }
   };
 
@@ -399,20 +450,30 @@ export default function GithubShowcase() {
                       <span className="font-bold text-slate-900">ashmitvavhal / contributions</span>
                     </div>
                     <div className="text-xs font-mono text-purple-light font-bold">
-                      {data?.stats.totalContributions} contributions in the last year
+                      {totalContrib} contributions in 2026
                     </div>
                   </div>
 
                   {/* SVG Calendar Grid */}
-                  <div className="overflow-x-auto pb-4">
+                  <div className="overflow-x-auto pb-4" onMouseLeave={() => setTooltip(null)}>
                     <div className="min-w-[620px] flex flex-col gap-1">
-                      {contributionInfo?.grid.map((row, rIdx) => (
+                      {dayGrid.map((row, rIdx) => (
                         <div key={rIdx} className="flex gap-1">
                           {row.map((cell, cIdx) => (
                             <div
                               key={cIdx}
-                              className={`w-3.5 h-3.5 rounded-sm transition-all duration-300 ${getCellColor(cell)}`}
-                              title={`${cell > 0 ? 'Contributions logged' : 'No contributions'}`}
+                              className={`w-3.5 h-3.5 rounded-sm cursor-pointer transition-all duration-200 hover:scale-110 hover:ring-1 hover:ring-purple-primary/60 ${getCellColor(cell.level)}`}
+                              onMouseEnter={(e) => {
+                                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                                setTooltip({ count: cell.count, date: cell.date, x: rect.left + rect.width / 2, y: rect.top });
+                              }}
+                              onMouseLeave={() => setTooltip(null)}
+                              onClick={(e) => {
+                                const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                                setTooltip(prev =>
+                                  prev && prev.date === cell.date ? null : { count: cell.count, date: cell.date, x: rect.left + rect.width / 2, y: rect.top }
+                                );
+                              }}
                             />
                           ))}
                         </div>
@@ -421,12 +482,13 @@ export default function GithubShowcase() {
                   </div>
 
                   <div className="flex items-center justify-between text-[9px] font-mono text-slate-500 pt-2 border-t border-slate-200/60">
-                    <span>Real-time profile calendar representation</span>
+                    <span>Hover for details</span>
                     <div className="flex items-center gap-1.5">
                       <span>Less</span>
                       <div className="w-2.5 h-2.5 rounded-sm bg-slate-200/60 border border-slate-300/40" />
                       <div className="w-2.5 h-2.5 rounded-sm bg-emerald-200" />
                       <div className="w-2.5 h-2.5 rounded-sm bg-emerald-400" />
+                      <div className="w-2.5 h-2.5 rounded-sm bg-emerald-500" />
                       <div className="w-2.5 h-2.5 rounded-sm bg-purple-primary" />
                       <span>More</span>
                     </div>
@@ -531,6 +593,19 @@ export default function GithubShowcase() {
         </AnimatePresence>
 
       </div>
+
+      {/* Glassmorphism contribution tooltip – fixed position so it floats over everything */}
+      {tooltip && (
+        <div
+          className="fixed z-[100] glassmorphism px-3 py-1.5 rounded-lg pointer-events-none shadow-md border border-purple-primary/20"
+          style={{ left: tooltip.x, top: tooltip.y - 10, transform: "translate(-50%, -100%)" }}
+        >
+          <p className="text-[11px] font-mono text-slate-700 whitespace-nowrap">
+            <span className="font-bold text-purple-primary">{tooltip.count}</span>
+            {` contribution${tooltip.count !== 1 ? "s" : ""} on ${formatDate(tooltip.date)}`}
+          </p>
+        </div>
+      )}
     </section>
   );
 }

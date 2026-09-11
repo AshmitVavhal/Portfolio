@@ -47,7 +47,7 @@ export default function Achievements() {
   return (
     <section className="relative py-24 bg-navy-dark overflow-hidden">
       {/* Glow Orbs */}
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[350px] h-[350px] bg-purple-primary/5 rounded-full glow-orb" />
+      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[350px] h-[350px] bg-emerald-500/10 rounded-full glow-orb" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
@@ -66,7 +66,7 @@ export default function Achievements() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-extrabold text-white"
+            className="text-3xl sm:text-4xl font-extrabold text-slate-900"
           >
             Achievements
           </motion.h2>
@@ -83,7 +83,7 @@ export default function Achievements() {
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.5 }}
               whileHover={{ y: -6 }}
-              className="glassmorphism-card p-6 rounded-2xl border border-purple-primary/10 flex flex-col justify-between h-full text-left transition-all duration-300"
+              className="glassmorphism-card p-6 rounded-2xl border border-purple-primary/15 flex flex-col justify-between h-full text-left transition-all duration-300"
             >
               <div>
                 {/* Icon & Tag */}
@@ -97,13 +97,13 @@ export default function Achievements() {
                 </div>
 
                 {/* Info */}
-                <h3 className="text-base font-extrabold text-white mb-1.5">{item.title}</h3>
-                <h4 className="text-xs font-mono text-purple-light/95 mb-4">{item.subtitle}</h4>
-                <p className="text-xs text-gray-400 leading-relaxed mb-6">{item.description}</p>
+                <h3 className="text-base font-extrabold text-slate-900 mb-1.5">{item.title}</h3>
+                <h4 className="text-xs font-mono text-purple-light font-semibold mb-4">{item.subtitle}</h4>
+                <p className="text-xs text-slate-600 leading-relaxed mb-6">{item.description}</p>
               </div>
 
               {/* Card Footer Indicator */}
-              <div className="border-t border-white/[0.04] pt-3 flex items-center justify-between text-[9px] font-mono text-gray-500">
+              <div className="border-t border-slate-200/60 pt-3 flex items-center justify-between text-[9px] font-mono text-slate-500">
                 <span>Verified Activity</span>
                 <span>•</span>
               </div>

@@ -54,9 +54,9 @@ export default function Hero() {
       className="relative min-h-screen flex items-center justify-center pt-28 pb-20 overflow-hidden bg-navy-dark bg-grid-pattern"
     >
       {/* Dynamic Ambient Background Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-purple-primary/10 glow-orb animate-pulse-slow" />
-      <div className="absolute top-1/3 left-10 w-[300px] h-[300px] bg-indigo-500/5 rounded-full glow-orb animate-float" />
-      <div className="absolute bottom-10 right-10 w-[350px] h-[350px] bg-fuchsia-500/5 rounded-full glow-orb animate-float-delayed" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-emerald-500/10 glow-orb animate-pulse-slow" />
+      <div className="absolute top-1/3 left-10 w-[300px] h-[300px] bg-teal-500/10 rounded-full glow-orb animate-float" />
+      <div className="absolute bottom-10 right-10 w-[350px] h-[350px] bg-emerald-600/10 rounded-full glow-orb animate-float-delayed" />
 
       <div className="max-w-4xl mx-auto px-6 md:px-12 w-full flex flex-col items-center text-center relative z-10">
         
@@ -67,7 +67,7 @@ export default function Hero() {
           transition={{ delay: 0.1, duration: 0.5 }}
           className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glassmorphism text-purple-light text-xs font-mono font-semibold w-max mb-8 border border-purple-primary/20"
         >
-          <span className="w-2 h-2 rounded-full bg-purple-light animate-ping" />
+          <span className="w-2 h-2 rounded-full bg-purple-primary animate-ping" />
           AI & Software Engineer
         </motion.div>
 
@@ -76,7 +76,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.6 }}
-          className="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-6"
+          className="text-4xl sm:text-6xl font-extrabold tracking-tight text-slate-900 mb-6"
         >
           Hi, I&apos;m{" "}
           <span className="text-gradient-purple block mt-1.5 sm:inline">
@@ -99,7 +99,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-base sm:text-lg text-gray-400 max-w-2xl mb-10 leading-relaxed"
+          className="text-base sm:text-lg text-slate-600 max-w-2xl mb-10 leading-relaxed font-normal"
         >
           Passionate about building intelligent AI-powered solutions and scalable full-stack applications that solve real-world problems.
         </motion.p>
@@ -113,7 +113,7 @@ export default function Hero() {
         >
           <button
             onClick={handleScrollToProjects}
-            className="px-8 py-4 rounded-xl bg-purple-primary hover:bg-purple-primary/95 text-white font-medium flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_0_20px_rgba(124,58,237,0.25)] hover:shadow-[0_0_30px_rgba(124,58,237,0.45)] cursor-pointer"
+            className="px-8 py-4 rounded-xl bg-purple-primary hover:bg-purple-primary/90 text-white font-semibold flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_4px_20px_rgba(0,178,137,0.3)] hover:shadow-[0_6px_30px_rgba(0,178,137,0.45)] cursor-pointer"
           >
             View Projects
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -122,7 +122,7 @@ export default function Hero() {
           <a
             href="/resume.pdf"
             download
-            className="px-8 py-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.06] hover:border-purple-primary/30 text-white font-medium flex items-center justify-center gap-2 transition-all duration-300"
+            className="px-8 py-4 rounded-xl bg-white/80 border border-slate-200/80 hover:bg-white hover:border-purple-primary/40 hover:text-purple-light text-slate-800 font-medium flex items-center justify-center gap-2 transition-all duration-300 shadow-sm"
           >
             <FileText className="w-4 h-4" />
             Download Resume
@@ -132,7 +132,7 @@ export default function Hero() {
             href="https://github.com/AshmitVavhal"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 rounded-xl bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.06] hover:border-purple-primary/30 text-white font-medium flex items-center justify-center gap-2 transition-all duration-300"
+            className="px-8 py-4 rounded-xl bg-white/80 border border-slate-200/80 hover:bg-white hover:border-purple-primary/40 hover:text-purple-light text-slate-800 font-medium flex items-center justify-center gap-2 transition-all duration-300 shadow-sm"
           >
             <Github className="w-4 h-4" />
             GitHub
@@ -144,16 +144,16 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.6, duration: 0.8 }}
-          className="w-full max-w-2xl bg-[#070517]/95 border border-purple-primary/20 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] text-left flex flex-col font-mono text-xs text-gray-300 h-64 sm:h-52 relative group"
+          className="w-full max-w-2xl bg-[#0f172a]/95 border border-slate-700/50 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.12)] text-left flex flex-col font-mono text-xs text-slate-300 h-64 sm:h-52 relative group"
         >
           {/* Header */}
-          <div className="bg-[#0f0c29]/90 px-4 py-3 border-b border-purple-primary/10 flex items-center justify-between">
+          <div className="bg-[#1e293b] px-4 py-3 border-b border-slate-700/60 flex items-center justify-between">
             <div className="flex gap-2">
               <span className="w-3 h-3 rounded-full bg-red-500/80" />
               <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
               <span className="w-3 h-3 rounded-full bg-green-500/80" />
             </div>
-            <div className="text-[10px] text-purple-light uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <div className="text-[10px] text-purple-primary uppercase tracking-widest font-semibold flex items-center gap-1.5">
               <TerminalIcon className="w-3.5 h-3.5" />
               <span>console@ashmit.dev</span>
             </div>
@@ -161,17 +161,17 @@ export default function Hero() {
           </div>
 
           {/* Body content */}
-          <div className="p-5 overflow-y-auto flex-1 flex flex-col gap-2 bg-[#05030f]/60 backdrop-blur-md">
+          <div className="p-5 overflow-y-auto flex-1 flex flex-col gap-2 bg-[#0b1329]/90 backdrop-blur-md">
             {terminalOutput.map((line, idx) => (
               <div key={idx} className="flex gap-2 items-start">
-                <span className="text-purple-light flex-shrink-0 select-none">&gt;</span>
-                <span className={idx === terminalOutput.length - 1 ? "text-white" : "text-gray-400"}>
+                <span className="text-purple-primary flex-shrink-0 select-none">&gt;</span>
+                <span className={idx === terminalOutput.length - 1 ? "text-white" : "text-slate-400"}>
                   {line}
                 </span>
               </div>
             ))}
             {terminalOutput.length < 7 && (
-              <span className="w-2 h-4 bg-purple-light animate-pulse ml-6" />
+              <span className="w-2 h-4 bg-purple-primary animate-pulse ml-6" />
             )}
           </div>
         </motion.div>

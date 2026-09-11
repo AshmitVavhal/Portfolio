@@ -78,7 +78,7 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "glassmorphism py-4 shadow-lg shadow-purple-primary/5"
+            ? "glassmorphism py-4 shadow-sm shadow-slate-900/5 border-b border-slate-200/60"
             : "bg-transparent py-6"
         }`}
       >
@@ -89,10 +89,10 @@ export default function Navbar() {
             onClick={(e) => handleNavClick(e, "#home")}
             className="flex items-center gap-2 group cursor-pointer"
           >
-            <div className="w-10 h-10 rounded-xl bg-purple-primary/10 border border-purple-primary/30 flex items-center justify-center transition-all duration-300 group-hover:border-purple-primary/80 group-hover:shadow-[0_0_15px_rgba(124,58,237,0.3)]">
-              <Terminal className="w-5 h-5 text-purple-light group-hover:text-white transition-colors duration-300" />
+            <div className="w-10 h-10 rounded-xl bg-purple-primary/10 border border-purple-primary/30 flex items-center justify-center transition-all duration-300 group-hover:border-purple-primary/80 group-hover:shadow-[0_0_15px_rgba(0,178,137,0.3)]">
+              <Terminal className="w-5 h-5 text-purple-light group-hover:text-purple-primary transition-colors duration-300" />
             </div>
-            <span className="font-mono text-lg font-bold tracking-tight text-white group-hover:text-purple-light transition-colors duration-300">
+            <span className="font-mono text-lg font-bold tracking-tight text-slate-900 group-hover:text-purple-light transition-colors duration-300">
               ashmit<span className="text-purple-light">.dev</span>
             </span>
           </a>
@@ -107,8 +107,8 @@ export default function Navbar() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 hover:text-white ${
-                    isActive ? "text-white" : "text-gray-400"
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors duration-300 hover:text-slate-900 ${
+                    isActive ? "text-purple-light font-semibold" : "text-slate-600"
                   }`}
                 >
                   <span className="relative z-10">{item.name}</span>
@@ -127,7 +127,7 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5 transition-all focus:outline-none"
+            className="md:hidden p-2 rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-all focus:outline-none"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -143,7 +143,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[73px] z-40 md:hidden glassmorphism border-b border-purple-primary/15 shadow-xl shadow-purple-primary/10 px-6 py-8"
+            className="fixed inset-x-0 top-[73px] z-40 md:hidden glassmorphism border-b border-slate-200 shadow-xl px-6 py-8"
           >
             <nav className="flex flex-col gap-4">
               {navItems.map((item) => {
@@ -156,13 +156,13 @@ export default function Navbar() {
                     onClick={(e) => handleNavClick(e, item.href)}
                     className={`flex items-center justify-between px-4 py-3 rounded-xl border transition-all duration-300 ${
                       isActive
-                        ? "bg-purple-primary/10 border-purple-primary/30 text-white font-semibold"
-                        : "bg-white/[0.02] border-white/[0.05] text-gray-400 hover:text-white hover:border-white/10"
+                        ? "bg-purple-primary/10 border-purple-primary/30 text-purple-light font-semibold"
+                        : "bg-white/80 border-slate-200 text-slate-600 hover:text-slate-900 hover:border-slate-300"
                     }`}
                   >
                     <span>{item.name}</span>
                     {isActive && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-light shadow-[0_0_8px_rgba(192,132,252,0.8)]" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-primary shadow-[0_0_8px_rgba(0,178,137,0.8)]" />
                     )}
                   </a>
                 );

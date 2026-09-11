@@ -313,20 +313,20 @@ export default function GithubShowcase() {
   const getCellColor = (level: number) => {
     switch (level) {
       case 1:
-        return "bg-purple-primary/25 border border-purple-primary/30";
+        return "bg-emerald-200 border border-emerald-300";
       case 2:
-        return "bg-purple-primary/55 border border-purple-primary/60";
+        return "bg-emerald-400 border border-emerald-500";
       case 3:
-        return "bg-purple-light border border-white/10 shadow-[0_0_8px_rgba(192,132,252,0.4)]";
+        return "bg-purple-primary border border-emerald-600 shadow-[0_0_8px_rgba(0,178,137,0.4)]";
       default:
-        return "bg-white/[0.02] border border-white/[0.04]";
+        return "bg-slate-200/60 border border-slate-300/40";
     }
   };
 
   return (
     <section className="relative py-24 bg-navy-dark overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-purple-primary/5 rounded-full glow-orb animate-pulse-slow" />
+      <div className="absolute bottom-1/4 left-1/4 w-[300px] h-[300px] bg-emerald-500/10 rounded-full glow-orb animate-pulse-slow" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
@@ -345,7 +345,7 @@ export default function GithubShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-extrabold text-white"
+            className="text-3xl sm:text-4xl font-extrabold text-slate-900"
           >
             GitHub Activity
           </motion.h2>
@@ -363,20 +363,20 @@ export default function GithubShowcase() {
               className="grid grid-cols-1 lg:grid-cols-12 gap-8"
             >
               <div className="lg:col-span-8 space-y-6">
-                <div className="h-48 bg-white/[0.02] border border-white/[0.04] rounded-2xl animate-pulse" />
+                <div className="h-48 bg-slate-200/40 border border-slate-300/40 rounded-2xl animate-pulse" />
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {[1, 2, 3].map((n) => (
-                    <div key={n} className="h-44 bg-white/[0.02] border border-white/[0.04] rounded-xl animate-pulse" />
+                    <div key={n} className="h-44 bg-slate-200/40 border border-slate-300/40 rounded-xl animate-pulse" />
                   ))}
                 </div>
               </div>
               <div className="lg:col-span-4 space-y-6">
                 <div className="grid grid-cols-2 gap-4">
                   {[1, 2, 3, 4].map((n) => (
-                    <div key={n} className="h-24 bg-white/[0.02] border border-white/[0.04] rounded-2xl animate-pulse" />
+                    <div key={n} className="h-24 bg-slate-200/40 border border-slate-300/40 rounded-2xl animate-pulse" />
                   ))}
                 </div>
-                <div className="h-64 bg-white/[0.02] border border-white/[0.04] rounded-2xl animate-pulse" />
+                <div className="h-64 bg-slate-200/40 border border-slate-300/40 rounded-2xl animate-pulse" />
               </div>
             </motion.div>
           ) : (
@@ -392,11 +392,11 @@ export default function GithubShowcase() {
               <div className="lg:col-span-8 space-y-6">
                 
                 {/* Real Contribution Calendar Graph */}
-                <div className="glassmorphism-card p-6 rounded-2xl border border-purple-primary/10 text-left">
+                <div className="glassmorphism-card p-6 rounded-2xl border border-purple-primary/15 text-left">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
                     <div className="flex items-center gap-2 font-mono text-xs">
                       <Laptop className="w-4 h-4 text-purple-light" />
-                      <span className="font-bold text-white">ashmitvavhal / contributions</span>
+                      <span className="font-bold text-slate-900">ashmitvavhal / contributions</span>
                     </div>
                     <div className="text-xs font-mono text-purple-light font-bold">
                       {data?.stats.totalContributions} contributions in the last year
@@ -420,14 +420,14 @@ export default function GithubShowcase() {
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-[9px] font-mono text-gray-500 pt-2 border-t border-white/[0.04]">
+                  <div className="flex items-center justify-between text-[9px] font-mono text-slate-500 pt-2 border-t border-slate-200/60">
                     <span>Real-time profile calendar representation</span>
                     <div className="flex items-center gap-1.5">
                       <span>Less</span>
-                      <div className="w-2.5 h-2.5 rounded-sm bg-white/[0.02] border border-white/[0.04]" />
-                      <div className="w-2.5 h-2.5 rounded-sm bg-purple-primary/25" />
-                      <div className="w-2.5 h-2.5 rounded-sm bg-purple-primary/55" />
-                      <div className="w-2.5 h-2.5 rounded-sm bg-purple-light" />
+                      <div className="w-2.5 h-2.5 rounded-sm bg-slate-200/60 border border-slate-300/40" />
+                      <div className="w-2.5 h-2.5 rounded-sm bg-emerald-200" />
+                      <div className="w-2.5 h-2.5 rounded-sm bg-emerald-400" />
+                      <div className="w-2.5 h-2.5 rounded-sm bg-purple-primary" />
                       <span>More</span>
                     </div>
                   </div>
@@ -442,26 +442,26 @@ export default function GithubShowcase() {
                       target="_blank"
                       rel="noopener noreferrer"
                       whileHover={{ y: -4 }}
-                      className="glassmorphism-card p-5 rounded-xl border border-white/[0.05] hover:border-purple-primary/30 flex flex-col justify-between h-48 text-left transition-all duration-300"
+                      className="glassmorphism-card p-5 rounded-xl border border-slate-200/80 hover:border-purple-primary/40 flex flex-col justify-between h-48 text-left transition-all duration-300 shadow-sm"
                     >
                       <div>
-                        <h3 className="text-sm font-bold text-white font-mono flex items-center justify-between">
+                        <h3 className="text-sm font-bold text-slate-900 font-mono flex items-center justify-between">
                           <span className="truncate pr-2">{repo.name}</span>
                           <FolderGit2 className="w-3.5 h-3.5 text-purple-light flex-shrink-0" />
                         </h3>
-                        <p className="text-[11px] text-gray-400 leading-relaxed mt-3.5 line-clamp-3">
+                        <p className="text-[11px] text-slate-600 leading-relaxed mt-3.5 line-clamp-3">
                           {repo.description || "Project codebase developed by Ashmit Vavhal."}
                         </p>
                       </div>
 
-                      <div className="flex items-center justify-between text-[10px] font-mono text-gray-500 border-t border-white/[0.04] pt-3 mt-4">
+                      <div className="flex items-center justify-between text-[10px] font-mono text-slate-500 border-t border-slate-200/60 pt-3 mt-4">
                         <div className="flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: LANG_COLORS[repo.language] || "#7C3AED" }} />
-                          <span>{repo.language || "Web"}</span>
+                          <span className="w-2 h-2 rounded-full" style={{ backgroundColor: LANG_COLORS[repo.language] || "#00B289" }} />
+                          <span className="text-slate-700">{repo.language || "Web"}</span>
                         </div>
                         <div className="flex items-center gap-2.5">
-                          <span className="flex items-center gap-0.5"><Star className="w-3 h-3 text-purple-light" /> {repo.stargazers_count}</span>
-                          <span className="flex items-center gap-0.5"><GitBranch className="w-3 h-3 text-purple-light" /> {repo.forks_count}</span>
+                          <span className="flex items-center gap-0.5 text-slate-600"><Star className="w-3 h-3 text-purple-light" /> {repo.stargazers_count}</span>
+                          <span className="flex items-center gap-0.5 text-slate-600"><GitBranch className="w-3 h-3 text-purple-light" /> {repo.forks_count}</span>
                         </div>
                       </div>
                     </motion.a>
@@ -477,60 +477,60 @@ export default function GithubShowcase() {
                 <div className="grid grid-cols-2 gap-4">
                   
                   {/* Public Repos */}
-                  <div className="glassmorphism-card p-4 rounded-2xl border border-white/[0.04] flex flex-col justify-between items-start h-24 text-left">
+                  <div className="glassmorphism-card p-4 rounded-2xl border border-slate-200/80 flex flex-col justify-between items-start h-24 text-left shadow-sm">
                     <div className="w-7 h-7 rounded-lg bg-purple-primary/10 border border-purple-primary/20 flex items-center justify-center">
                       <FolderGit2 className="w-4 h-4 text-purple-light" />
                     </div>
                     <div>
-                      <div className="text-lg font-extrabold text-white font-mono">{data?.stats.publicRepos}</div>
-                      <div className="text-[9px] text-gray-500 uppercase tracking-wider font-semibold">Public Repos</div>
+                      <div className="text-lg font-extrabold text-slate-900 font-mono">{data?.stats.publicRepos}</div>
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Public Repos</div>
                     </div>
                   </div>
 
                   {/* Stars */}
-                  <div className="glassmorphism-card p-4 rounded-2xl border border-white/[0.04] flex flex-col justify-between items-start h-24 text-left">
+                  <div className="glassmorphism-card p-4 rounded-2xl border border-slate-200/80 flex flex-col justify-between items-start h-24 text-left shadow-sm">
                     <div className="w-7 h-7 rounded-lg bg-purple-primary/10 border border-purple-primary/20 flex items-center justify-center">
                       <Star className="w-4 h-4 text-purple-light" />
                     </div>
                     <div>
-                      <div className="text-lg font-extrabold text-white font-mono">{data?.stats.totalStars}</div>
-                      <div className="text-[9px] text-gray-500 uppercase tracking-wider font-semibold">Total Stars</div>
+                      <div className="text-lg font-extrabold text-slate-900 font-mono">{data?.stats.totalStars}</div>
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Total Stars</div>
                     </div>
                   </div>
 
                   {/* Followers */}
-                  <div className="glassmorphism-card p-4 rounded-2xl border border-white/[0.04] flex flex-col justify-between items-start h-24 text-left">
+                  <div className="glassmorphism-card p-4 rounded-2xl border border-slate-200/80 flex flex-col justify-between items-start h-24 text-left shadow-sm">
                     <div className="w-7 h-7 rounded-lg bg-purple-primary/10 border border-purple-primary/20 flex items-center justify-center">
                       <Users className="w-4 h-4 text-purple-light" />
                     </div>
                     <div>
-                      <div className="text-lg font-extrabold text-white font-mono">{data?.stats.followers}</div>
-                      <div className="text-[9px] text-gray-500 uppercase tracking-wider font-semibold">Followers</div>
+                      <div className="text-lg font-extrabold text-slate-900 font-mono">{data?.stats.followers}</div>
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Followers</div>
                     </div>
                   </div>
 
                   {/* Following */}
-                  <div className="glassmorphism-card p-4 rounded-2xl border border-white/[0.04] flex flex-col justify-between items-start h-24 text-left">
+                  <div className="glassmorphism-card p-4 rounded-2xl border border-slate-200/80 flex flex-col justify-between items-start h-24 text-left shadow-sm">
                     <div className="w-7 h-7 rounded-lg bg-purple-primary/10 border border-purple-primary/20 flex items-center justify-center">
                       <Laptop className="w-4 h-4 text-purple-light" />
                     </div>
                     <div>
-                      <div className="text-lg font-extrabold text-white font-mono">{data?.stats.following}</div>
-                      <div className="text-[9px] text-gray-500 uppercase tracking-wider font-semibold">Following</div>
+                      <div className="text-lg font-extrabold text-slate-900 font-mono">{data?.stats.following}</div>
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Following</div>
                     </div>
                   </div>
 
                 </div>
 
                 {/* Real Languages Code Weights */}
-                <div className="glassmorphism-card p-6 rounded-2xl border border-purple-primary/10 text-left">
-                  <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider mb-6 flex items-center gap-1.5">
+                <div className="glassmorphism-card p-6 rounded-2xl border border-purple-primary/15 text-left">
+                  <h3 className="text-xs font-mono font-bold text-slate-900 uppercase tracking-wider mb-6 flex items-center gap-1.5">
                     <Code2 className="w-4.5 h-4.5 text-purple-light" />
                     Code Weights
                   </h3>
 
                   {/* Combined bar */}
-                  <div className="w-full h-2.5 bg-white/5 rounded-full overflow-hidden flex mb-6">
+                  <div className="w-full h-2.5 bg-slate-200/60 rounded-full overflow-hidden flex mb-6">
                     {data?.languages.map((lang, idx) => (
                       <div
                         key={idx}
@@ -549,29 +549,29 @@ export default function GithubShowcase() {
                       <div key={idx} className="flex items-center justify-between text-xs font-mono">
                         <div className="flex items-center gap-2">
                           <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: lang.color }} />
-                          <span className="text-gray-300">{lang.name}</span>
+                          <span className="text-slate-700">{lang.name}</span>
                         </div>
-                        <span className="text-white font-bold">{lang.percent}%</span>
+                        <span className="text-slate-900 font-bold">{lang.percent}%</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Recent Commit History Logs */}
-                <div className="glassmorphism-card p-5 rounded-2xl border border-white/[0.04] text-left">
-                  <div className="flex items-center gap-2 font-mono text-xs mb-4 border-b border-white/[0.03] pb-2">
+                <div className="glassmorphism-card p-5 rounded-2xl border border-slate-200/80 text-left shadow-sm">
+                  <div className="flex items-center gap-2 font-mono text-xs mb-4 border-b border-slate-200/60 pb-2">
                     <MessageSquareCode className="w-4 h-4 text-purple-light" />
-                    <span className="font-bold text-white">Recent Activity</span>
+                    <span className="font-bold text-slate-900">Recent Activity</span>
                   </div>
 
                   <div className="space-y-4">
                     {data?.events.map((ev) => (
-                      <div key={ev.id} className="text-[11px] font-mono text-gray-400">
-                        <div className="flex justify-between items-baseline text-white mb-0.5">
+                      <div key={ev.id} className="text-[11px] font-mono text-slate-600">
+                        <div className="flex justify-between items-baseline text-slate-900 mb-0.5">
                           <span className="font-bold text-purple-light text-[10px] truncate max-w-[130px]">{ev.title}</span>
-                          <span className="text-[8px] text-gray-500 font-semibold">{ev.date}</span>
+                          <span className="text-[8px] text-slate-500 font-semibold">{ev.date}</span>
                         </div>
-                        <p className="line-clamp-2 leading-relaxed text-[10px]">{ev.subtitle}</p>
+                        <p className="line-clamp-2 leading-relaxed text-[10px] text-slate-600">{ev.subtitle}</p>
                       </div>
                     ))}
                   </div>

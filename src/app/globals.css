@@ -1,27 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-purple-primary: #7C3AED;
-  --color-purple-light: #C084FC;
-  --color-navy-dark: #030014;
-  --color-navy-card: #09071f;
-  --color-navy-light: #120e2e;
+  --color-purple-primary: #00B289;
+  --color-purple-light: #008F6D;
+  --color-navy-dark: #FAF9F5;
+  --color-navy-card: #FFFFFF;
+  --color-navy-light: #F0F2ED;
   
+  --font-sans: var(--font-sans-bonsai), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-mono-bonsai), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
   --animate-pulse-slow: pulse 8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-delayed: float-delayed 8s ease-in-out infinite;
 }
 
 :root {
-  --background: #030014;
-  --foreground: #f3f4f6;
+  --background: #FAF9F5;
+  --foreground: #1E293B;
   scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-sans-bonsai), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   overflow-x: hidden;
 }
 
@@ -31,49 +34,51 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #030014;
+  background: #FAF9F5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e1b4b;
+  background: #CBD5E1;
   border-radius: 4px;
-  border: 2px solid #030014;
+  border: 2px solid #FAF9F5;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #7C3AED;
+  background: #00B289;
 }
 
-/* Custom Utilities */
+/* Retained Glassmorphism - Adapted to Bonsai Palette */
 .glassmorphism {
-  background: rgba(8, 7, 20, 0.6);
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(0, 178, 137, 0.15);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.03), 0 0 15px rgba(0, 178, 137, 0.03);
 }
 
 .glassmorphism-card {
-  background: rgba(12, 10, 36, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(124, 58, 237, 0.1);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 178, 137, 0.14);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 0 20px rgba(0, 178, 137, 0.03);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .glassmorphism-card:hover {
-  background: rgba(12, 10, 36, 0.6);
-  border-color: rgba(124, 58, 237, 0.35);
-  box-shadow: 0 0 30px rgba(124, 58, 237, 0.15);
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(0, 178, 137, 0.35);
+  box-shadow: 0 20px 40px -10px rgba(0, 178, 137, 0.12), 0 0 30px rgba(0, 178, 137, 0.08);
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #ffffff 30%, #a78bfa 100%);
+  background: linear-gradient(135deg, #0F172A 30%, #00B289 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .text-gradient-purple {
-  background: linear-gradient(135deg, #c084fc 0%, #7c3aed 50%, #4f46e5 100%);
+  background: linear-gradient(135deg, #00B289 0%, #008F6D 50%, #064E3B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -81,8 +86,8 @@ body {
 /* Ambient Background Grid */
 .bg-grid-pattern {
   background-image: 
-    linear-gradient(rgba(124, 58, 237, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 58, 237, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(0, 178, 137, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 178, 137, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -113,7 +118,8 @@ body {
 
 .glow-orb {
   filter: blur(100px);
-  opacity: 0.15;
+  opacity: 0.12;
   pointer-events: none;
 }
+
 

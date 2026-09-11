@@ -22,7 +22,7 @@ export default function Experience() {
   return (
     <section id="experience" className="relative py-24 bg-navy-dark overflow-hidden">
       {/* Glow Orbs */}
-      <div className="absolute top-1/4 left-10 w-[250px] h-[250px] bg-purple-primary/10 rounded-full glow-orb animate-pulse-slow" />
+      <div className="absolute top-1/4 left-10 w-[250px] h-[250px] bg-emerald-500/10 rounded-full glow-orb animate-pulse-slow" />
 
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
         
@@ -41,7 +41,7 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-extrabold text-white"
+            className="text-3xl sm:text-4xl font-extrabold text-slate-900"
           >
             Work Experience
           </motion.h2>
@@ -57,7 +57,7 @@ export default function Experience() {
           <div className="relative grid grid-cols-1 md:grid-cols-2 gap-8 items-start mb-12">
             
             {/* Timeline Circle Marker (Desktop-Centered, Mobile-Lefted) */}
-            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-navy-dark border-4 border-purple-primary z-20 flex items-center justify-center shadow-[0_0_15px_rgba(124,58,237,0.5)]" />
+            <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-[#FAF9F5] border-4 border-purple-primary z-20 flex items-center justify-center shadow-[0_0_15px_rgba(0,178,137,0.4)]" />
 
             {/* Left Column: Company & Period */}
             <motion.div
@@ -69,11 +69,11 @@ export default function Experience() {
             >
               <div className="flex items-center gap-2 md:flex-row-reverse mb-1">
                 <Briefcase className="w-5 h-5 text-purple-light flex-shrink-0" />
-                <h3 className="text-xl font-bold text-white">Full Stack Developer Intern</h3>
+                <h3 className="text-xl font-bold text-slate-900">Full Stack Developer Intern</h3>
               </div>
               <span className="text-purple-light font-bold text-base mb-2 block">Ateion</span>
               
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.02] border border-white/[0.05] text-gray-400 text-xs font-mono md:flex-row-reverse w-max">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-slate-200/80 text-slate-600 text-xs font-mono md:flex-row-reverse w-max shadow-sm">
                 <Calendar className="w-3.5 h-3.5" />
                 Jan 2026 – March 2026
               </div>
@@ -87,12 +87,12 @@ export default function Experience() {
               transition={{ duration: 0.5 }}
               className="pl-12 md:pl-8 text-left"
             >
-              <div className="glassmorphism-card p-6 md:p-8 rounded-2xl border border-purple-primary/10">
-                <h4 className="text-sm font-mono font-bold text-white uppercase tracking-wider mb-4 border-b border-white/[0.05] pb-2">
+              <div className="glassmorphism-card p-6 md:p-8 rounded-2xl border border-purple-primary/15">
+                <h4 className="text-sm font-mono font-bold text-slate-900 uppercase tracking-wider mb-4 border-b border-slate-200/80 pb-2">
                   Key Responsibilities
                 </h4>
                 
-                <ul className="space-y-3.5 text-sm text-gray-400 mb-6">
+                <ul className="space-y-3.5 text-sm text-slate-600 mb-6">
                   {responsibilities.map((item, idx) => (
                     <li key={idx} className="flex gap-2.5 items-start">
                       <ChevronRight className="w-4 h-4 text-purple-light flex-shrink-0 mt-0.5" />
@@ -103,7 +103,7 @@ export default function Experience() {
 
                 {/* Utilized tech list */}
                 <div>
-                  <h5 className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-2.5">
+                  <h5 className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2.5">
                     Technologies Utilized
                   </h5>
                   <div className="flex flex-wrap gap-2">

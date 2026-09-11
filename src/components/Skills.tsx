@@ -68,7 +68,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-extrabold text-white"
+            className="text-3xl sm:text-4xl font-extrabold text-slate-900"
           >
             Skills & Technologies
           </motion.h2>
@@ -89,14 +89,14 @@ export default function Skills() {
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1, duration: 0.5 }}
                 className={`glassmorphism-card p-6 rounded-2xl border text-left flex flex-col h-full cursor-default ${
-                  isHovered ? "border-purple-primary/40 shadow-[0_0_30px_rgba(124,58,237,0.15)]" : "border-white/[0.05]"
+                  isHovered ? "border-purple-primary/40 shadow-[0_10px_30px_rgba(0,178,137,0.12)]" : "border-slate-200/80"
                 }`}
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-xl bg-purple-primary/10 flex items-center justify-center border border-purple-primary/20">
                     {category.icon}
                   </div>
-                  <h3 className="text-base font-bold text-white tracking-wide">{category.title}</h3>
+                  <h3 className="text-base font-bold text-slate-900 tracking-wide">{category.title}</h3>
                 </div>
 
                 {/* Badges Container */}
@@ -104,7 +104,7 @@ export default function Skills() {
                   {category.skills.map((skill, sIdx) => (
                     <span
                       key={sIdx}
-                      className="px-3 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.06] hover:border-purple-primary/40 hover:bg-purple-primary/5 text-gray-300 hover:text-white text-xs font-mono transition-all duration-300 cursor-default"
+                      className="px-3 py-1.5 rounded-lg bg-white/80 border border-slate-200/80 hover:border-purple-primary/40 hover:bg-purple-primary/10 text-slate-700 hover:text-purple-light text-xs font-mono transition-all duration-300 shadow-sm cursor-default"
                     >
                       {skill}
                     </span>
@@ -123,7 +123,7 @@ export default function Skills() {
           transition={{ delay: 0.6 }}
           className="mt-12 text-center"
         >
-          <p className="text-xs font-mono text-gray-500">
+          <p className="text-xs font-mono text-slate-500">
             * Actively building applications using the MERN Stack, Next.js, and Gemini API.
           </p>
         </motion.div>

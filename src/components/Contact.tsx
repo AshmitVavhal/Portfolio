@@ -86,27 +86,27 @@ export default function Contact() {
   return (
     <section id="contact" className="relative py-24 bg-navy-dark overflow-hidden bg-grid-pattern">
       {/* Background gradients */}
-      <div className="absolute top-1/3 left-10 w-[300px] h-[300px] bg-purple-primary/10 rounded-full glow-orb animate-pulse-slow" />
-      <div className="absolute bottom-10 right-10 w-[200px] h-[200px] bg-fuchsia-500/15 rounded-full glow-orb animate-float" />
+      <div className="absolute top-1/3 left-10 w-[300px] h-[300px] bg-emerald-500/10 rounded-full glow-orb animate-pulse-slow" />
+      <div className="absolute bottom-10 right-10 w-[200px] h-[200px] bg-teal-500/10 rounded-full glow-orb animate-float" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         
         {/* Title */}
         <div className="flex flex-col mb-16 items-center text-center">
-          <motion.span // wait, we can just use fm.span from framer-motion to be consistent
+          <fm.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-xs font-mono font-bold tracking-widest text-purple-light uppercase mb-2"
           >
             07. Get In Touch
-          </motion.span>
+          </fm.span>
           <fm.h2
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-extrabold text-white"
+            className="text-3xl sm:text-4xl font-extrabold text-slate-900"
           >
             Contact
           </fm.h2>
@@ -125,8 +125,8 @@ export default function Contact() {
             className="lg:col-span-5 flex flex-col justify-between"
           >
             <div className="text-left space-y-6">
-              <h3 className="text-2xl font-extrabold text-white">Let&apos;s build something great.</h3>
-              <p className="text-sm sm:text-base text-gray-400 leading-relaxed max-w-md">
+              <h3 className="text-2xl font-extrabold text-slate-900">Let&apos;s build something great.</h3>
+              <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-md">
                 I am actively looking for software development internships and project collaborations. If you have an opportunity or just want to ask about my AI tools, drop me a message.
               </p>
             </div>
@@ -140,14 +140,14 @@ export default function Contact() {
                   target={detail.href.startsWith("http") ? "_blank" : undefined}
                   rel={detail.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   download={detail.download}
-                  className="flex items-center gap-4 p-4 rounded-xl bg-white/[0.02] border border-white/[0.04] hover:border-purple-primary/30 hover:bg-purple-primary/5 transition-all duration-300 group text-left"
+                  className="flex items-center gap-4 p-4 rounded-xl bg-white/80 border border-slate-200/80 hover:border-purple-primary/40 hover:bg-purple-primary/5 transition-all duration-300 group text-left shadow-sm"
                 >
                   <div className="w-10 h-10 rounded-xl bg-purple-primary/10 flex items-center justify-center border border-purple-primary/20 group-hover:scale-105 transition-transform duration-300">
                     {detail.icon}
                   </div>
                   <div>
-                    <div className="text-[10px] font-mono text-gray-500 uppercase tracking-wide">{detail.label}</div>
-                    <div className="text-sm font-semibold text-white group-hover:text-purple-light transition-colors">{detail.value}</div>
+                    <div className="text-[10px] font-mono text-slate-500 uppercase tracking-wide">{detail.label}</div>
+                    <div className="text-sm font-semibold text-slate-900 group-hover:text-purple-light transition-colors">{detail.value}</div>
                   </div>
                 </a>
               ))}
@@ -162,7 +162,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-7"
           >
-            <div className="glassmorphism-card p-6 sm:p-10 rounded-3xl border border-purple-primary/10 h-full flex flex-col justify-center">
+            <div className="glassmorphism-card p-6 sm:p-10 rounded-3xl border border-purple-primary/15 h-full flex flex-col justify-center">
               
               <AnimatePresence mode="wait">
                 {status === "success" ? (
@@ -173,11 +173,11 @@ export default function Contact() {
                     exit={{ opacity: 0 }}
                     className="flex flex-col items-center justify-center text-center py-10"
                   >
-                    <div className="w-16 h-16 rounded-full bg-purple-primary/15 border border-purple-primary/35 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(124,58,237,0.2)]">
+                    <div className="w-16 h-16 rounded-full bg-purple-primary/15 border border-purple-primary/35 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(0,178,137,0.2)]">
                       <CheckCircle2 className="w-8 h-8 text-purple-light" />
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-2">Message Sent Successfully!</h3>
-                    <p className="text-sm text-gray-400 max-w-sm">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2">Message Sent Successfully!</h3>
+                    <p className="text-sm text-slate-600 max-w-sm">
                       Thank you for reaching out. I have received your message and will respond as soon as possible.
                     </p>
                   </fm.div>
@@ -190,7 +190,7 @@ export default function Contact() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       {/* Name */}
                       <div className="flex flex-col gap-1.5">
-                        <label htmlFor="name" className="text-xs font-mono text-gray-400">Your Name *</label>
+                        <label htmlFor="name" className="text-xs font-mono text-slate-700 font-semibold">Your Name *</label>
                         <input
                           id="name"
                           type="text"
@@ -199,13 +199,13 @@ export default function Contact() {
                           onChange={handleChange}
                           required
                           placeholder="John Doe"
-                          className="px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] focus:border-purple-primary focus:bg-purple-primary/5 focus:ring-1 focus:ring-purple-primary text-sm text-white placeholder-gray-600 outline-none transition-all"
+                          className="px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-purple-primary focus:bg-purple-primary/5 focus:ring-1 focus:ring-purple-primary text-sm text-slate-900 placeholder-slate-400 outline-none transition-all shadow-sm"
                         />
                       </div>
                       
                       {/* Email */}
                       <div className="flex flex-col gap-1.5">
-                        <label htmlFor="email" className="text-xs font-mono text-gray-400">Email Address *</label>
+                        <label htmlFor="email" className="text-xs font-mono text-slate-700 font-semibold">Email Address *</label>
                         <input
                           id="email"
                           type="email"
@@ -214,14 +214,14 @@ export default function Contact() {
                           onChange={handleChange}
                           required
                           placeholder="john@example.com"
-                          className="px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] focus:border-purple-primary focus:bg-purple-primary/5 focus:ring-1 focus:ring-purple-primary text-sm text-white placeholder-gray-600 outline-none transition-all"
+                          className="px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-purple-primary focus:bg-purple-primary/5 focus:ring-1 focus:ring-purple-primary text-sm text-slate-900 placeholder-slate-400 outline-none transition-all shadow-sm"
                         />
                       </div>
                     </div>
 
                     {/* Subject */}
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="subject" className="text-xs font-mono text-gray-400">Subject</label>
+                      <label htmlFor="subject" className="text-xs font-mono text-slate-700 font-semibold">Subject</label>
                       <input
                         id="subject"
                         type="text"
@@ -229,13 +229,13 @@ export default function Contact() {
                         value={formState.subject}
                         onChange={handleChange}
                         placeholder="Collaboration Interest / Opportunity"
-                        className="px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] focus:border-purple-primary focus:bg-purple-primary/5 focus:ring-1 focus:ring-purple-primary text-sm text-white placeholder-gray-600 outline-none transition-all"
+                        className="px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-purple-primary focus:bg-purple-primary/5 focus:ring-1 focus:ring-purple-primary text-sm text-slate-900 placeholder-slate-400 outline-none transition-all shadow-sm"
                       />
                     </div>
 
                     {/* Message */}
                     <div className="flex flex-col gap-1.5">
-                      <label htmlFor="message" className="text-xs font-mono text-gray-400">Message *</label>
+                      <label htmlFor="message" className="text-xs font-mono text-slate-700 font-semibold">Message *</label>
                       <textarea
                         id="message"
                         name="message"
@@ -244,13 +244,13 @@ export default function Contact() {
                         required
                         rows={4}
                         placeholder="Hi Ashmit, let's connect for an internship opportunity..."
-                        className="px-4 py-3 rounded-xl bg-white/[0.02] border border-white/[0.06] focus:border-purple-primary focus:bg-purple-primary/5 focus:ring-1 focus:ring-purple-primary text-sm text-white placeholder-gray-600 outline-none transition-all resize-none"
+                        className="px-4 py-3 rounded-xl bg-white border border-slate-200 focus:border-purple-primary focus:bg-purple-primary/5 focus:ring-1 focus:ring-purple-primary text-sm text-slate-900 placeholder-slate-400 outline-none transition-all resize-none shadow-sm"
                       />
                     </div>
 
                     {/* Error Banner */}
                     {status === "error" && (
-                      <div className="p-3 rounded-lg bg-red-950/20 border border-red-500/30 flex items-center gap-2 text-xs text-red-400 font-mono">
+                      <div className="p-3 rounded-lg bg-red-50 border border-red-200 flex items-center gap-2 text-xs text-red-600 font-mono">
                         <AlertCircle className="w-4 h-4 flex-shrink-0" />
                         Please fill in all required fields.
                       </div>
@@ -260,7 +260,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={status === "sending"}
-                      className="w-full py-4 rounded-xl bg-purple-primary hover:bg-purple-primary/95 text-white font-semibold flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_0_20px_rgba(124,58,237,0.2)] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                      className="w-full py-4 rounded-xl bg-purple-primary hover:bg-purple-primary/90 text-white font-semibold flex items-center justify-center gap-2 group transition-all duration-300 shadow-[0_4px_20px_rgba(0,178,137,0.3)] hover:shadow-[0_6px_30px_rgba(0,178,137,0.45)] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                     >
                       {status === "sending" ? (
                         <>

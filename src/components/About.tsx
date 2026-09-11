@@ -54,7 +54,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl font-extrabold text-white"
+            className="text-3xl sm:text-4xl font-extrabold text-slate-900"
           >
             About Me
           </motion.h2>
@@ -70,26 +70,26 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-6 text-gray-400 space-y-6 text-base sm:text-lg leading-relaxed text-left"
+            className="lg:col-span-6 text-slate-600 space-y-6 text-base sm:text-lg leading-relaxed text-left"
           >
             <p>
-              I am a <strong className="text-white">Computer Engineering student</strong> with a strong focus on <strong className="text-purple-light font-semibold">Artificial Intelligence</strong>, <strong className="text-purple-light font-semibold">Machine Learning</strong>, and <strong className="text-purple-light font-semibold">MERN Stack Development</strong>. I enjoy building intelligent systems that combine AI capabilities with scalable web technologies to solve practical real-world challenges.
+              I am a <strong className="text-slate-900">Computer Engineering student</strong> with a strong focus on <strong className="text-purple-light font-semibold">Artificial Intelligence</strong>, <strong className="text-purple-light font-semibold">Machine Learning</strong>, and <strong className="text-purple-light font-semibold">MERN Stack Development</strong>. I enjoy building intelligent systems that combine AI capabilities with scalable web technologies to solve practical real-world challenges.
             </p>
             <p>
               My interests span machine learning, computer vision, generative AI, full-stack development, and software engineering. I am passionate about transforming innovative ideas into impactful products through modern technologies and continuous learning.
             </p>
             <p>
-              Positioning myself as an <strong className="text-white">AI + Software Engineer</strong>, I leverage my engineering background to design complete workflows: from setting up training pipelines and model endpoints to wrapping them in clean, responsive web application interfaces.
+              Positioning myself as an <strong className="text-slate-900">AI + Software Engineer</strong>, I leverage my engineering background to design complete workflows: from setting up training pipelines and model endpoints to wrapping them in clean, responsive web application interfaces.
             </p>
 
             {/* Core Domains Highlights */}
             <div className="pt-6 grid grid-cols-2 gap-4">
               <div className="p-4.5 rounded-xl bg-purple-primary/5 border border-purple-primary/20 text-left">
-                <div className="text-sm font-mono font-bold text-white uppercase tracking-wider">AI/ML</div>
+                <div className="text-sm font-mono font-bold text-slate-900 uppercase tracking-wider">AI/ML</div>
                 <div className="text-[10px] text-purple-light font-mono mt-1">Computer Vision & LLMs</div>
               </div>
               <div className="p-4.5 rounded-xl bg-purple-primary/5 border border-purple-primary/20 text-left">
-                <div className="text-sm font-mono font-bold text-white uppercase tracking-wider">MERN Stack</div>
+                <div className="text-sm font-mono font-bold text-slate-900 uppercase tracking-wider">MERN Stack</div>
                 <div className="text-[10px] text-purple-light font-mono mt-1">Scalable Web Apps</div>
               </div>
             </div>
@@ -115,14 +115,14 @@ export default function About() {
                   </div>
                   <span className={`text-[8px] font-mono font-bold uppercase px-2 py-0.5 rounded ${
                     card.subtitle.includes("Primary") 
-                      ? "bg-purple-primary/20 text-purple-light border border-purple-primary/30" 
-                      : "bg-white/5 text-gray-400 border border-white/5"
+                      ? "bg-purple-primary/15 text-purple-light border border-purple-primary/25" 
+                      : "bg-slate-100 text-slate-600 border border-slate-200"
                   }`}>
                     {card.subtitle}
                   </span>
                 </div>
-                <h3 className="text-sm font-bold text-white mb-2">{card.title}</h3>
-                <p className="text-xs text-gray-400 leading-relaxed">{card.desc}</p>
+                <h3 className="text-sm font-bold text-slate-900 mb-2">{card.title}</h3>
+                <p className="text-xs text-slate-600 leading-relaxed">{card.desc}</p>
               </motion.div>
             ))}
           </motion.div>
